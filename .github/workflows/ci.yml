@@ -11,13 +11,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1. Set up job & Run actions/checkout@v3
-    - name: Run actions/checkout@v3
-      uses: actions/checkout@v3
+    # 1. Set up job & Run actions/checkout (Di-update ke v4 biar gak deprecated)
+    - name: Run actions/checkout@v4
+      uses: actions/checkout@v4
 
-    # 2. Set up Python 3.12.7 (Sesuai spek gambar instruksi lo)
+    # 2. Set up Python 3.12.7 (Di-update ke setup-python@v5 biar matching)
     - name: Set up Python 3.12.7
-      uses: actions/setup-python@v4
+      uses: actions/setup-python@v5
       with:
         python-version: "3.12.7"
 
@@ -48,9 +48,9 @@ jobs:
         RUN_ID=$(ls -t mlruns/0/ | head -n 1)
         echo "Latest Run ID found: $RUN_ID"
 
-    # 7. 🌟 SYARAT SKILLED: Upload Artefak Model ke GitHub Repo
+    # 7. 🔥 FIX EROR DEPRECATED: Upload Artefak Model ke GitHub Repo menggunakan v4!
     - name: Upload to GitHub
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: trained-mlflow-model
         path: mlruns/0/
